@@ -19,5 +19,6 @@ publish-testpypi: install-tooling clean
 .PHONY: publish-testpypi
 
 publish-pypi: install-tooling clean package-lib
+	. .venv/bin/activate && \
 	python -m twine upload dist/*
 .PHONY: publish-pypi
