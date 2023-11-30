@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open("README.md") as file:
+with open("README.md", encoding="utf-8") as file:
     read_me_description = file.read()
 
 setup(
     name="vec3d",
-    version="0.1.0",
+    version="0.2.0",
     author="Sergio F. Gonzalez",
     author_email="sergio.f.gonzalez@gmail.com",
     description="Maths and graph functions for vectors in the 3D space",

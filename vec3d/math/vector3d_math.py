@@ -2,6 +2,7 @@
 A library providing a few Math related utility functions for the 3D space.
 """
 from math import acos, pi, sqrt
+from typing import Sequence
 
 # Type alias
 IntOrFloat = int | float
@@ -161,3 +162,23 @@ def cross(
     ux, uy, uz = u
     vx, vy, vz = v
     return (uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx)
+
+
+def linear_combination(
+    scalars: Sequence[float],
+    *vectors: tuple[IntOrFloat, IntOrFloat, IntOrFloat]
+):
+    """Returns the linear combination of applying each of the scalars to the
+    corresponding vectors in sequence. For example
+    linear_combination([1, 2, 3], (1, 1, 1), (2, 2, 2), (3, 3, 3)) will return
+    the vector (14, 14, 14).
+    """
+    if len(scalars) != len(vectors):
+        raise ValueError("The same number of scalars and vectors are required")
+    return add(*[scale(s, v) for s, v in list(zip(scalars, vectors))])
+
+
+def unit(v: tuple[IntOrFloat, IntOrFloat, IntOrFloat]):
+    """Returns a vector whose length is one that is oriented in the same
+    direction as the one given."""
+    return scale(1.0 / length(v), v)

@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-logger.info("Using vec3d.graph v0.1.0")
+logger.info("Using vec3d.graph v0.2.0")
 
 
 class Colors3D(Enum):

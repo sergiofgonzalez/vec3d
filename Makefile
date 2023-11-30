@@ -13,7 +13,7 @@ package-lib: install-tooling clean
 	python setup.py sdist bdist_wheel
 .PHONY: package-lib
 
-publish-testpypi: install-tooling clean
+publish-testpypi: install-tooling clean package-lib
 	. .venv/bin/activate && \
 	python -m twine upload --repository testpypi dist/*
 .PHONY: publish-testpypi

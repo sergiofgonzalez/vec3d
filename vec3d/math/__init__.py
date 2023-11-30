@@ -7,10 +7,12 @@ from vec3d.math.vector3d_math import (
     cross,
     dot,
     length,
+    linear_combination,
     scale,
     subtract,
     to_degrees,
     to_radians,
+    unit,
 )
 
 __all__ = [
@@ -19,8 +21,10 @@ __all__ = [
     "cross",
     "dot",
     "length",
+    "linear_combination",
     "scale",
     "subtract",
     "to_degrees",
     "to_radians",
+    "unit",
 ]
