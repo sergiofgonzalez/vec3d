@@ -25,4 +25,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 
-[0.2.1]: https://github.com/sergiofgonzalez/vec3d/compare/v0.2.0...v0.2.1
+[0.2.3]: https://github.com/sergiofgonzalez/vec3d/compare/v0.2.0...v0.2.3

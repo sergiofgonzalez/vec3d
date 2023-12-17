@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as file:
 
 setup(
     name="vec3d",
-    version="0.2.2",
+    version="0.2.3",
     author="Sergio F. Gonzalez",
     author_email="sergio.f.gonzalez@gmail.com",
     description="Maths and graph functions for vectors in the 3D space",
