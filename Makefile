@@ -3,6 +3,14 @@ clean:
 	rm -rf build/ dist/ *.egg-info/
 .PHONY: clean
 
+test:
+	python -m unittest discover
+.PHONY: test
+
+test-verbose:
+	python -m unittest discover -v
+.PHONY: test
+
 install-tooling:
 	. .venv/bin/activate && \
 	python -m pip install --upgrade setuptools wheel twine

@@ -24,7 +24,10 @@ def add(
         tuple[IntOrFloat, IntOrFloat, IntOrFloat]: the vector sum
     """
     if len(vectors) < 2:
-        raise ValueError("at least two 3D vectors were expected")
+        raise ValueError("At least two 3D vectors were expected")
+
+    if not _same_size(*vectors):
+        raise TypeError("Size of the vectors must be same")
 
     zipped_by_coords = zip(*vectors)
     sum_by_coords = [sum(coords) for coords in zipped_by_coords]
@@ -64,6 +67,9 @@ def subtract(
         tuple[IntOrFloat, IntOrFloat, IntOrFloat]: the displacement vector.
         That is the vector that result from subtracting w from v.
     """
+    if not _same_size(v, w):
+        raise TypeError("Size of the vectors must be same")
+
     return tuple([v_c - w_c for v_c, w_c in zip(v, w)])
 
 
@@ -97,6 +103,9 @@ def dot(
     Returns:
         float: the result of the dot product of u and v.
     """
+    if not _same_size(u, v):
+        raise TypeError("Size of the vectors must be same")
+
     return sum((coord_u * coord_v) for coord_u, coord_v in zip(u, v))
 
 
@@ -108,9 +117,9 @@ def angle_between(
 
     Args:
         u (tuple[IntOrFloat, IntOrFloat, IntOrFloat]): the first vector
-            designated byt its Cartesian coordinates.
+            designated by its Cartesian coordinates.
         v (tuple[IntOrFloat, IntOrFloat, IntOrFloat]): the second vector
-            designated byt its Cartesian coordinates.
+            designated by its Cartesian coordinates.
 
     Returns:
         float: the angle between u and v expressed in radians.
@@ -173,12 +182,31 @@ def linear_combination(
     linear_combination([1, 2, 3], (1, 1, 1), (2, 2, 2), (3, 3, 3)) will return
     the vector (14, 14, 14).
     """
+    if scalars is None or vectors is None:
+        raise TypeError("Arguments are required")
+
     if len(scalars) != len(vectors):
         raise ValueError("The same number of scalars and vectors are required")
-    return add(*[scale(s, v) for s, v in list(zip(scalars, vectors))])
+
+    if len(scalars) < 2:
+        raise ValueError("At least two scalars and two vectors are required")
+
+    return add(*[scale(s, v) for s, v in zip(scalars, vectors)])
 
 
 def unit(v: tuple[IntOrFloat, IntOrFloat, IntOrFloat]):
     """Returns a vector whose length is one that is oriented in the same
     direction as the one given."""
     return scale(1.0 / length(v), v)
+
+
+def _same_size(*vectors) -> bool:
+    """Returns True if all the given vectors are of the same size,
+    False otherwise.
+    """
+    return all(
+        [
+            len(vectors[i]) == len(vectors[(i + 1) % len(vectors)])
+            for i in range(len(vectors))
+        ]
+    )
