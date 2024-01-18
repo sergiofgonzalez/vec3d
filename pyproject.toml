@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vec3d"
-version = "0.2.4rc0"
+version = "0.2.4"
 description = "Maths and graph functions for vectors in the 3D space"
 authors = ["Sergio F. Gonzalez <sergio.f.gonzalez@gmail.com>"]
 readme = "README.md"

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4] - 2024-01-18
+
+### Added
+
+### Fixed
+
+### Changed
+
+- Using Poetry tooling.
+
+### Removed
+
+
 ## [0.2.1] - 2023-12-14
 
 ### Added
@@ -25,4 +38,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 
+[0.2.4]: https://github.com/sergiofgonzalez/vec3d/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/sergiofgonzalez/vec3d/compare/v0.2.0...v0.2.3
